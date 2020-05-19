@@ -1,0 +1,130 @@
+﻿@model List<Model.EF.ProductCategory>
+
+@{ 
+    var newProduct = (List<Model.EF.Product>)ViewBag.newProduct;
+    var hotProduct = (List<Model.EF.Product>)ViewBag.hotProduct;
+}
+
+    <div class="side-bar col-lg-3">
+        <div class="search-hotel">
+            <h3 class="agileits-sear-head">Tìm kiếm...</h3>
+            <form action="#" method="post">
+                <input type="search" placeholder="Tên sản phẩm..." name="search" required="">
+                <input type="submit" value=" ">
+            </form>
+        </div>
+        <!-- price range -->
+        <div class="left-side">
+            <h3 class="agileits-sear-head">Sản phẩm</h3>
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <a href="/san-pham/@item.MetaTitle-@item.ID"><span class="span">-- @item.Name --</span></a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <!-- //price range -->
+        <!-- deals -->
+        <div class="deal-leftmk left-side">
+            <h3 class="agileits-sear-head">Sản phẩm mới</h3>
+            @foreach (var item in newProduct)
+            {
+                var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+                
+                <div class="row special-sec1">
+                    <a href="@url">
+                        <div class="col-xs-4 img-deals">
+                            <img style="width: 94px; height: 94px;" src="@item.Image" alt="@item.MetaTitle" class="img-fluid">
+                        </div>
+                        <div class="col-xs-8 img-deal1">
+                            <h3>@item.Name</h3>
+                            <a href="@url">@(item.Price.HasValue ? item.Price.Value.ToString() : "Liên hệ")</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                </div>
+            }
+        </div>
+        <!-- //deals -->
+        <!-- deals -->
+        <div class="deal-leftmk left-side">
+            <h3 class="agileits-sear-head">Sản phẩm khuyến mãi</h3>
+            @foreach (var item in hotProduct)
+            {
+                var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+                <div class="row special-sec1">
+                    <a href="@url">
+                        <div class="col-xs-4 img-deals">
+                            <img style="width: 94px; height: 94px;" src="@item.Image" alt="@item.MetaTitle" class="img-fluid">
+                        </div>
+                        <div class="col-xs-8 img-deal1">
+                            <h3>@item.Name</h3>
+                            <a href="@url">@item.PromotionPrice</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                </div>
+            }
+        </div>
+        <!-- //deals -->
+        <!-- reviews -->
+        <div class="customer-rev left-side">
+            <h3 class="agileits-sear-head">Khách hàng đánh giá</h3>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>5.0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>4.0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half"></i>
+                        <i class="far fa-star"></i>
+                        <span>3.5</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>3.0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>2.5</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- //reviews -->
+
+    </div>

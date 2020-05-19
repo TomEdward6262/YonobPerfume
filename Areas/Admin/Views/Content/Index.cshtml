@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<Model.EF.Content>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Quản lý bài viết";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+@section header{
+    Danh sách bài viết}
+
+
+@section jsFooter{
+    <script src="~/Assets/Admin/js/controller/contentController.js"></script>
+}
+
+<div class="row">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Contents</h6>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Index", "Content", FormMethod.Get))
+            {
+                <div class="row form-group" style="margin-left:20px">
+                    <form class="form-inline mr-auto">
+                        <input class="form-control col-lg-8" type="text" placeholder="Search" name="searchString" value="@ViewBag.SearchString" aria-label="Search">
+                        <button style="margin-left:10px" class="btn btn-outline-success btn-rounded btn-sm my-0" type="submit">Search</button>
+                        <a href="/Admin/Content/Create" style="margin-left: 10px" type="button" class="btn btn-outline-primary">Thêm mới</a>
+                    </form>
+                </div><hr />
+            }
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Tags</th>
+                            <th>Status</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.Name</td>
+                                <td>@item.CategoryID</td>
+                                <td>@item.Tags</td>
+                                <td><a href="#" class="ui-btn-active" data-id="@item.ID">@(item.Status?"Active":"Inactive")</a></td>
+                                <td>
+                                    <a href="/Admin/Content/Edit/@item.ID">Edit</a>
+                                </td>
+                                <td>
+                                    @Ajax.ActionLink("Delete", "Delete", new { @id = item.ID }, new AjaxOptions
+                               {
+                                   Confirm = "Bạn có chắc chắn xóa bản ghi này ?",
+                                   OnComplete = "$('#row_" + @item.ID + "').remove()",
+                                   HttpMethod = "Delete"
+                               })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.SearchString }))
+            </div>
+        </div>
+    </div>
+
+</div>
