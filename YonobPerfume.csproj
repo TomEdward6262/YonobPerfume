@@ -3063,6 +3063,7 @@
     <Content Include="Assets\Client\webfonts\fa-brands-400.svg" />
     <Content Include="Assets\Client\webfonts\fa-regular-400.svg" />
     <Content Include="Assets\Client\webfonts\fa-solid-900.svg" />
+    <Content Include="Assets\js\src\dropdown.js" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Autofac.dll" />
     <Content Include="bin\AWSSDK.Core.dll" />

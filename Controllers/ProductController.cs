@@ -31,7 +31,7 @@ namespace YonobPerfume.Controllers
         public ActionResult Category(long id)
         {
             var category = new ProductCategryDao().ViewDetail(id);
-            ViewBag.getProduct = new ProductDao().getProduct();
+            ViewBag.sameProduct = new ProductDao().sameProduct(9, id);
             return View(category);
         }
 

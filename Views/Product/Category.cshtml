@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Danh mục";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var sameProduct = (List<Model.EF.Product>)ViewBag.sameProduct;
 }
 
 <!-- short -->
@@ -31,13 +32,13 @@
             <!--end-left-menu-->
             <div class="left-ads-display col-lg-9">
                 <div class="row">
-                    @foreach (var item in Model)
+                    @foreach (var item in sameProduct)
                     {
                         <div class="col-lg-4 col-md-6 col-sm-6 product-men women_two">
                             <div class="product-toys-info">
                                 <div class="men-pro-item">
                                     <div class="men-thumb-item">
-                                        <img src="@item" class="img-thumbnail img-fluid" alt="">
+                                        <img src="" class="img-thumbnail img-fluid" alt="">
                                         <div class="men-cart-pro">
                                             <div class="inner-men-cart-pro">
                                                 <a href="single.html" class="link-product-add-cart">Quick View</a>
