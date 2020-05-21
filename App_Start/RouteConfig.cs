@@ -35,6 +35,20 @@ namespace YonobPerfume
             ); ;
 
             routes.MapRoute(
+                name: "checkOut",
+                url: "thanh-toan",
+                defaults: new { controller = "checkOut", action = "Index", id = UrlParameter.Optional }
+                , namespaces: new[] { "YonobPerfume.Controllers" }
+            ); ;
+
+            routes.MapRoute(
+                name: "About",
+                url: "gioi-thieu",
+                defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional }
+                , namespaces: new[] { "YonobPerfume.Controllers" }
+            ); ;
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

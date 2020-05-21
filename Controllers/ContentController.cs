@@ -20,9 +20,11 @@ namespace YonobPerfume.Controllers
             return View();
         }
 
-        public ActionResult Content_detail(long id)
+        public ActionResult Content_detail(int id)
         {
-            return View();
+            var content = new ContentDao().ViewDetail(id);
+
+            return View(content);
         }
 
     }

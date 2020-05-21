@@ -1,4 +1,4 @@
-﻿
+﻿@model Model.EF.Content
 @{
     ViewBag.Title = "Content_detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -24,15 +24,11 @@
 <!--About -->
 <section class="about py-lg-4 py-md-3 py-sm-3 py-3">
     <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
-        <h3 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">Bài viết</h3>
+        <h3 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">@Model.Name</h3>
         <div class="about-innergrid-agile text-center">
-            <h4>Chào mừng đến với cửa hàng của chúng tôi</h4>
-            <p class="mb-3">
-                Cửa hàng chúng tôi cung cấp các loại gấu bông trong và ngoài nước, đầy đủ thể loại, sản phẩm. Shop Gấu Bông
-                đang chiếm thị phần lớn trên toàn quốc nhờ chất lượng và thẩm mỹ của các bé gấu đáng yêu.
-            </p>
-            <div class=" img-toy-w3l-top">
-            </div>
+            <h4>@Model.Description</h4>
+            <p class="mb-3">@Model.Detail</p>
+            <img style="width: 500px; height: auto;" src="@Model.Image"/>
         </div>
         <div class="about-sub-inner text-center mt-lg-4 mt-3">
             <h4>

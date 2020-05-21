@@ -51,7 +51,7 @@
                                                         <a href="/Product/@item.MetaTitle-@item.ID">@item.Name</a>
                                                     </h4>
                                                     <div class="grid-price mt-2">
-                                                        <span class="money ">@item.Price</span>
+                                                        <span class="money ">@Html.Raw(item.PromotionPrice.HasValue ? "<strike>$" + item.Price.ToString() + "</strike>" + " " + "$" + item.PromotionPrice.ToString() : "$" + item.Price.ToString())</span>
                                                     </div>
                                                 </div>
                                                 

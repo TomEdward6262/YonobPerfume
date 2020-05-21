@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-xs-8 img-deal1">
                             <h3>@item.Name</h3>
-                            <a href="@url">@(item.Price.HasValue ? item.Price.Value.ToString() : "Liên hệ")</a>
+                            <a href="@url">@Html.Raw(item.PromotionPrice.HasValue ? "<strike>$"+ item.Price.Value.ToString() + "</strike>" + " $" + item.PromotionPrice.ToString() : "$"+ item.Price.ToString())</a>
                         </div>
                         <div class="clearfix"></div>
                     </a>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="col-xs-8 img-deal1">
                             <h3>@item.Name</h3>
-                            <a href="@url">@item.PromotionPrice</a>
+                            <a href="@url">@Html.Raw(item.PromotionPrice.HasValue ? "<strike>$" + item.Price.ToString() + "</strike>" + " " + "$" + item.PromotionPrice.ToString() : "$" + item.Price.ToString())</a>
                         </div>
                         <div class="clearfix"></div>
                     </a>
